@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Server | Home</title>
+</head>
+<body>
+    <div id="Main">
+    <h1><u>Hello</u></h1>
+    <h3 style="color: rgba(255, 255, 255, 0.918); background-color: orange; margin-bottom: 22vh;">How are you there?</h3>
+    <h2 style="color: rgb(212, 212, 212); margin-bottom: 13vh;">LOCAL SERVER SERVING AT PORT 8080</h2>
+    
+    <div id="buttons">
+        <a href="/user/get">Get</a>
+        <a href="/signIn">Post</a>
+        <a href="/put">Put</a>
+        <a href="/delete">Delete</a>
+        <a href="/done?showData">Database</a>
+        <!-- <button onclick="httpRequest('Get')">Get</button> -->
+        <!-- <button onclick="httpRequest('POST')">Post</button> -->
+        <!-- <button onclick="httpRequest('PUT')">Put</button> -->
+        <!-- <button onclick="httpRequest('DELETE')">Delete</button> -->
+        <a href="/dir">Directory</a>
+
+        <!-- <button>Patch</button>
+        <button>Head</button> -->
+    </div>
+</div>
+    <!-- <name><b>Devloped by Deepanshu! 🇮🇳</b></name> -->
+    <script>
+        function httpRequest(method){
+            // let ele = document.getElementById("text");
+            // ele.innerText = method;
+            alert(method + " Will implement shortly!")
+        }
+    </script>
+</body>
+</html>
