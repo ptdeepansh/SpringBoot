@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>User Dashboard</title>
+	<link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+			margin-top: 15px;
+            font-family: Arial, sans-serif;
+            background: rgb(0, 0, 0);
+			background-image: url('/images/BgImage.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ===== Dashboard Container ===== */
+        .dashboard {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .user-details {
+            line-height: 1.6;
+        }
+
+        .user-details p {
+            margin: 8px 0;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Glassy Navigation Bar -->
+<div class="navbar">
+    <div class="logo">DeepServer</div>
+    <div class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/user/dashboard}">Dashboard</a>
+	<!--	<a th:if="${#httpServletRequest.remoteUser != null}" th:href="@{/logout}">Logout</a>
+		<a th:if="${#httpServletRequest.remoteUser == null}" th:href="@{/login}">Login</a> -->
+        <a  th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+
+<!-- use for dynamic content --> 
+<div sec:authorize="hasRole('ADMIN')">
+    <!-- This block will only be visible to users with role ADMIN -->
+    <p style="color: white;">Welcome, Admin!</p>
+</div>
+
+<!-- Dashboard Content -->
+<div class="dashboard">
+    <h1>Welcome, <span th:text="${name}">User Name</span>!</h1>
+    <div class="user-details">
+        <p><span class="label">name:</span> <span th:text="${title}">User Title</span></p>
+        <p><span class="label">ERP:</span> <span th:text="${erp}">ERP Code</span></p>
+        <p><span class="label">Contact No:</span> <span th:text="${contactNo}">Contact Number</span></p>
+    </div>
+	<ul>
+       <li><b>Name:</b> <span th:text="${user.name}">N/A</span></li>
+       <li><b>State:</b> <span th:text="${user.state}">N/A</span></li>
+       <li><b>Email:</b> <span th:text="${user.email_id}">N/A</span></li>
+       <li><b>Phone:</b> <span th:text="${user.phone_no}">N/A</span></li>
+       <li><b>Age:</b> <span th:text="${user.age}">N/A</span></li>
+       <li><b>Total Matches:</b> <span th:text="${user.totalmatches}">N/A</span></li>
+       <li><b>Total Kills:</b> <span th:text="${user.totalkills}">N/A</span></li>
+       <li><b>Joined Date:</b> <span th:text="${#dates.format(user.joined_date, 'yyyy-MM-dd')}">N/A</span></li>
+   </ul>
+</div>
+
+
+</body>
+</html>

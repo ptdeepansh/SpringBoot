@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+	    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Server | Store Data</title>
+</head>
+<body id="userform">
+    <h1 style="margin-bottom: 100px; font-size:40px"><u>Store Data</u></h1>
+    <div id="trasgg">
+        <h2 style="border-radius:10px 10px 0px 0px; color: rgb(233, 233, 233); padding: 10px 30px 10px 30px; background-color: rgb(141, 46, 165); font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 20px; margin-bottom: 30px;">User form to submit deatils to the server!</h2>
+		<form name="myForm" id="myForm" method="post" action="/user/post">
+		  <!-- Changed input names to match your JavaScript and backend keys -->
+		  <input type="text" name="username" id="username" placeholder="Enter your name.." required> <!-- name="name" -->
+		  <input type="password" name="password" id="password" placeholder="Enter email address.." required> <!-- name="email" -->
+		  <p id="error"></p>
+		  <button type="submit" id="formBtn">Store Data</button>
+		  <a style="color: white; background-color:black; margin-top: 20px; text-decoration: none;" href="/">Home🕹</a>
+		</form>
+		
+		<script>
+		  // Highlight: Grab the form element by its ID
+		  const form = document.getElementById('myForm');
+		
+		  form.addEventListener('submit', function(event) {
+		    event.preventDefault();  // Prevent default page reload on form submit
+			let role;
+		    // Highlight: Use input names matching your server and JavaScript keys
+		    const data = {
+		      username: form.username.value,
+		      password: form.password.value,
+			  role: "ADMIN"
+		    };
+			console.log(data);
+		
+		    fetch("/user/post", {
+		      method: "POST",
+		      headers: {
+		        "Content-Type": "application/json"  // Highlight: Must be application/json to match Spring controller
+		      },
+		      body: JSON.stringify(data)  // Highlight: Send data as JSON string
+		    })
+		    .then(response => {
+		      if (!response.ok) throw new Error('Network response was not ok');
+		      return response.json();  // Parse JSON response from server
+		    })
+		    .then(result => {
+		      console.log('Success:', result);
+		      // Highlight: Provide user feedback on success
+		      document.getElementById('error').textContent = 'User submitted successfully!';
+		      form.reset();  // Clear form after successful submission
+			  window.location.href = "/user/get";
+		    })
+		    .catch(error => {
+		      console.error('Error:', error);
+		      // Highlight: Display error message to user
+		      document.getElementById('error').textContent = 'Submission failed: ' + error.message;
+		    });
+		  });
+		  </script>
+</body>
+</html>

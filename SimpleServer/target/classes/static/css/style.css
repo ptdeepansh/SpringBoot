@@ -1,0 +1,278 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}     
+body{
+    background-color: aliceblue;
+    background-image: url(/images/BgImage.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+body::after{
+    content: "Devloped by Deepanshu! 🇮🇳";
+    position: absolute;
+    bottom: 30px;
+    color: white;
+    font-weight: 600;
+    font-family: cursive;
+    font-size: 23px;
+}
+#Main{
+	margin-top: 45px;
+    width: 100vw;
+    height: 85vh;
+}
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f2f2f2;
+}
+h3{
+    color: orange;
+    text-align: center;
+    margin-bottom: 100px;
+    font-variant: small-caps;
+}
+#buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+#buttons button,a{
+    height: 30px;
+    width: 100px;
+    border-radius: 20px;
+}
+#buttons button,a{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: darkcyan;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+#buttons button:focus, a:focus{
+    background-color: sandybrown;
+    border-top: 80px;
+    border-color: rgb(56, 56, 56);
+}
+#olist li{
+    display: flex;
+    flex-direction: row;
+    /* row-gap: 20px; */
+    font-size: 18px;
+    font-weight: 600;
+    background-color: antiquewhite;
+    width: 25vw;
+    height: 5vh;
+    justify-content: left;
+    align-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px;
+}
+#olist{
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 50px;
+    justify-content: center;
+}
+#olist li{
+    box-shadow: -2px 2px 5px 3px burlywood;
+}
+#DataContainer {
+    /* Data '/Get' */
+    display: flex;
+    margin-left: auto;
+}
+.viewbtn{
+    flex-direction: column;
+    background-color: burlywood;
+    /* display: inline-flex; */
+    padding: 1px;
+    justify-content: center;
+    align-items: center;
+    height: 3vh;
+    margin-left: 5px;
+}
+#body2{
+    display: flex !important;
+    justify-content: center;
+}
+/* name{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+} */
+#FSubmitted{
+    visibility: hidden;
+}
+#trasgg{
+    height: 50vh;
+    background-color: rgba(255, 255, 255, 0.24);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#userform{
+    height: 90vh;
+    width: 100vw;
+    justify-content: start;
+    display: flexbox;
+    align-content: center;
+    /* POST Styling */
+}
+#userform form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 0px 30px 0px 30px;
+    align-items: center;
+}
+#userform input{
+    width: 30vw;
+    height: 4.5vh;
+    margin-left: 0px;
+    border-radius: 20px;
+    border: inset;
+    color: rebeccapurple;
+    font-weight: 600;
+    text-align: center;
+}
+input::placeholder{
+    background-color: #f0f0f0;
+    color: black;
+    font-weight: 600;
+    margin-left: 120px;
+    text-align: center;
+}
+input:focus{
+    border-color:chocolate ;
+}
+#userform button{
+    margin-top: 7px;
+    width: 8vw;
+    height: 3.5vh;
+    border-radius: 20px;
+    background-color: purple;
+    font-weight: 600;
+    color: white;
+}
+#userform button:focus{
+    background-color: transparent;
+    color: white;
+}
+table{
+    background-color: rgba(226, 226, 226, 0.836);
+    margin: 10vh 0px 30vh 0px;
+    border: none;
+    outline: none;
+}
+th{
+    background-color: rgb(99, 32, 255);
+    padding-left: 90px;
+    padding-right: 90px;
+    color: rgb(255, 255, 255);
+}
+tr:nth-child(even){
+    background-color: rgb(252, 252, 252);
+    color: black;
+}
+tr:nth-child(odd){
+    background-color: #d4d4d4;
+    color: black;
+}
+#DataBase b{
+    font-family: cursive;
+}
+
+#radiodiv{
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+#radioBtn{
+    width: 2vw !important;
+    height: 2vh !important;
+}
+
+#labelDel{
+    background-color: aqua;
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 30vw;
+    column-gap: 15px;
+    row-gap: 20px;
+    border: 20px;
+    border-radius: 15px;
+    outline: burlywood;
+    justify-content: left;
+    padding: 10px 20px 10px 20px;
+}
+/* ===== Glassy Navbar ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 90%;
+  	border-radius: 20px;
+  	box-shadow: 2px 2px 13px #f2f2f2;
+  	margin-top: 15px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+	background-color: transparent;
+	border: 1px solid white;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.nav-links a:hover {
+	background-color: rgb(246, 245, 244, 0.3);
+    color: white;
+    font-weight: 700;
+    border-radius: 20px;
+}
