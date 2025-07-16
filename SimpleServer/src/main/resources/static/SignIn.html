@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+	<title>Server | User Login</title>
+</head>
+
+<body id="userform">
+	<h1 style="margin-bottom: 70px; margin-top:30px; font-size:30px"><u>Welcome back please Signin</u></h1>
+	<div id="trasgg">
+		<h2
+			style="border-radius:10px 10px 0px 0px; color: rgb(233, 233, 233); padding: 10px 30px 10px 30px; background-color: rgb(141, 46, 165); font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 20px; margin-bottom: 30px;">
+			User Login Form</h2>
+		<form name="myForm" id="myForm" method="post" > <!--action="/user/g-login"-->
+			<!-- Changed input names to match your JavaScript and backend keys -->
+			<input type="text" name="username" id="username" placeholder="Enter your name.." required>
+			<!-- name="name" -->
+			<input type="password" name="password" id="password" placeholder="Enter password.." required>
+			<!-- name="email" -->
+			<p id="error" style="color: red;"></p>
+			<button style="margin-bottom: 10px;" type="submit" id="formBtn">Submit Data</button>
+			
+		</form>
+		<script>
+		window.addEventListener("DOMContentLoaded", () => {
+		    const params = new URLSearchParams(window.location.search);
+		
+		    if (params.get("success") === "true") {
+		        alert("✅ Login successful!");
+				window.location.href = "/";
+		    }
+		
+		    if (params.get("error") === "true") {
+		        alert("❌ Invalid username or password!");
+		        const errorElement = document.getElementById("error");
+		        if (errorElement) {
+		            errorElement.textContent = "❌ Invalid username or password!";
+		        }
+		    }
+		
+		    if (params.get("logout") === "true") {
+		        alert("✅ Logout successful!");
+				window.location.href = "/";
+		    }
+		
+		    // Optional: Remove query params from the URL
+		    history.replaceState(null, "", window.location.pathname);
+		});
+		</script>
+<!--
+		<script>
+		    const params = new URLSearchParams(window.location.search);
+			if (params.get("Success")) {
+			    alert("✅ Login successful!");
+				//	window.location.href = "/"; 
+			  }
+		    if (params.get("error")) {
+				alert("Invaild Credentials!");
+		        document.getElementById("error").textContent = "❌ Invalid username or password!";
+		    } else if (params.get("logout")) {
+		        document.getElementById("error").textContent = "✅ You have been logged out successfully.";
+		    }
+			else{
+				//alert("Login Success!");
+			}
+		</script>
+
+		<script>
+			// Highlight: Grab the form element by its ID
+			const form = document.getElementById('myForm');
+
+			form.addEventListener('submit', function (event) {
+				event.preventDefault();  // Prevent default page reload on form submit
+
+				// Highlight: Use input names matching your server and JavaScript keys
+				const data = {
+					username: form.username.value,
+					password: form.password.value,
+				};
+				let message = "Hello";
+				console.log(message, data);
+
+				fetch("/user/g-login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"  // Highlight: Must be application/json to match Spring controller
+					},
+					body: JSON.stringify(data)  // Highlight: Send data as JSON string
+				})
+					.then(response => {
+						if (response.ok) {
+							alert("Login success")
+							window.location.href = "/user/all";
+						} // Parse JSON response from server
+						else {
+							alert("Login failed");
+						}
+					});
+			}); 
+		</script>
+-->
+</body>
+
+</html>

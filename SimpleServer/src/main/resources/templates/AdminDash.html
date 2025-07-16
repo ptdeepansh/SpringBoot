@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            margin: 0; padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .admin-info {
+            margin-bottom: 40px;
+        }
+        .admin-info p {
+            font-size: 18px;
+            color: #444;
+            margin: 8px 0;
+        }
+        .label {
+            font-weight: bold;
+            color: #666;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            font-size: 16px;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f7ff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    
+    <div class="admin-info">
+        <h2>Your Profile</h2>
+        <p><span class="label">Name:</span> <span th:text="${name}">Admin Name</span></p>
+        <p><span class="label">Title:</span> <span th:text="${title}">Admin Title</span></p>
+        <p><span class="label">ERP:</span> <span th:text="${erp}">ERP Code</span></p>
+        <p><span class="label">Contact No:</span> <span th:text="${contactNo}">Contact Number</span></p>
+    </div>
+
+    <div class="user-list">
+        <h2>Users List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>ERP</th>
+                    <th>Contact No</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${name}">User Name</td>
+                    <td th:text="${title}">User Title</td>
+                    <td th:text="${erp}">ERP Code</td>
+                    <td th:text="${contactNo}">Contact Number</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
