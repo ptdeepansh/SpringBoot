@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Server | Home</title>
+</head>
+<body>
+	<!-- Glassy Navigation Bar -->
+	<div class="navbar">
+	    <div class="logo">DeepServer</div>
+	    <div class="nav-links">
+	        <a href="/">Home</a>
+	        <a href="/user/dashboard">Dashboard</a>
+	        <a href="/logout">Logout</a>
+	    </div>
+	</div>    
+	<div id="Main">
+		<!-- <h1><u>Hello</u></h1>
+	    <h3 style="color: rgba(255, 255, 255, 0.918); background-color: orange; margin-bottom: 22vh;">How are you there?</h3> -->
+	    <h2 style="color: rgb(212, 212, 212); margin-bottom: 13vh;">LOCAL SERVER SERVING AT PORT 8080</h2>
+	    <div id="buttons">
+	        <a href="/user/get">Get</a>
+	        <!-- <a href="/signIn">Post</a> -->
+			<!-- <a href="/put">Put</a> -->
+			<!-- <a href="/delete">Delete</a> -->
+	        <a href="/user/all">Database</a>
+	        <!-- <button onclick="httpRequest('Get')">Get</button> -->
+	        <!-- <button onclick="httpRequest('POST')">Post</button> -->
+	        <!-- <button onclick="httpRequest('PUT')">Put</button> -->
+	        <!-- <button onclick="httpRequest('DELETE')">Delete</button> -->
+			<!-- <a href="/dir">Directory</a> -->
+	        <!-- <button>Patch</button> -->
+			<!-- <button>Head</button> -->
+	    </div>
+		<div sec:authorize="hasRole('ADMIN')">
+			<h3 style="display:flex; justify-content:center; margin-top: 80px; padding: 0;">To Authorize a new person<a
+										style="background-color: antiquewhite; color: black; margin-left: 10px;" ; href="/authPerson">ADD</a></h3>
+		</div>				
+</div>
+</body>
+</html>
