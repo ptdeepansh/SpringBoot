@@ -1,0 +1,11 @@
+com/deepanshu/simpleserver/database/mongoDB/TempUserAuthData.class
+com/deepanshu/simpleserver/database/mongoDB/mongoRepo.class
+com/deepanshu/simpleserver/Controller.class
+com/deepanshu/simpleserver/services/SecurityConfig.class
+com/deepanshu/simpleserver/htmlController/EntryController.class
+com/deepanshu/simpleserver/SimpleServerApplication.class
+com/deepanshu/simpleserver/htmlController/htmlDashboard.class
+com/deepanshu/simpleserver/database/mongoDB/MuserData.class
+com/deepanshu/simpleserver/htmlController/GlobalErrorHandler.class
+com/deepanshu/simpleserver/database/mongoDB/TempAuthData.class
+com/deepanshu/simpleserver/LoginRequest.class
