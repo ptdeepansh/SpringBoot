@@ -1,0 +1,13 @@
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  cloud:
+    gateway:
+      routes:
+        - id: Simple-Server
+          uri: http://localhost:8081
+          predicates:
+            - Path=/user/**
