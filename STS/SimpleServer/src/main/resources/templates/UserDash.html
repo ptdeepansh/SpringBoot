@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <div class="logo">DeepServer</div>
+    <div class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/user/dashboard}">Dashboard</a>
+        <!--<a th:href="@{/logout}">Logout</a>-->
+		<!-- Show only if the user is authenticated -->
+        <a href="/logout" sec:authorize="isAuthenticated()">Logout</a>
+
+        <!-- Show only if the user is not authenticated -->
+        <a href="/login" sec:authorize="isAnonymous()">Login</a>
+    </div>
+</div>
+
+<!-- Dashboard Content -->
+<div id="main-content">
+    <h1>User Details</h1>
+
+    <div class="form-group">
+        <label>Name:</label>
+        <input type="text" th:value="${user.name}" readonly>
+
+        <label>State:</label>
+        <input type="text" th:value="${user.state}" readonly>
+    </div>
+
+    <div class="form-group">
+        <label>Email:</label>
+        <input type="email" th:value="${user.email_id}" readonly>
+
+        <label>Phone:</label>
+        <input type="text" th:value="${user.phone_no}" readonly>
+    </div>
+
+    <div class="form-group">
+        <label>Age:</label>
+        <input type="number" th:value="${user.age}" readonly>
+
+        <label>Total Matches:</label>
+        <input type="number" th:value="${user.totalmatches}" readonly>
+    </div>
+
+    <div class="form-group">
+        <label>Total Kills:</label>
+        <input type="number" th:value="${user.totalkills}" readonly>
+
+        <label>Joined Date:</label>
+        <input type="text" th:value="${#dates.format(user.joined_date, 'yyyy-MM-dd')}" readonly>
+    </div>
+
+    <button class="btn" onclick="openModal()">Edit Details</button>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Edit Your Contact Details</h2>
+        <form th:action="@{/user/update}" method="post">
+            <input type="hidden" name="name" th:value="${user.name}" />
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email_id" th:value="${user.email_id}" required>
+            </div>
+            <div class="form-group">
+                <label>Phone:</label>
+                <input type="text" name="phone_no" th:value="${user.phone_no}" required>
+            </div>
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" name="age" th:value="${user.age}" required>
+            </div>
+            <button class="submit-btn" type="submit">Update</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Script -->
+<script>
+    function openModal() {
+        document.getElementById("editModal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("editModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById("editModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+</script>
+</body>
+</html>

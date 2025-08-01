@@ -1,0 +1,32 @@
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  cloud:
+    gateway:
+      routes:
+        - id: Simple-Server
+          uri: http://localhost:8081
+          predicates:
+            - Path=/user/**
+            
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  datadog:
+    metrics:
+      export:
+        endable: true
+        api-key: 3d0b3c0318541275b96b5407fcdbbc70
+        step: 10s
+  metrics:
+   tags:
+    application: "Spring Project-0.0.1"
+    environment: dev
+logging:
+ level:
+  root: DEBUG

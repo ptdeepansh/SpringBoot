@@ -1,0 +1,11 @@
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/Controller.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/LoginRequest.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/SimpleServerApplication.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/database/mongoDB/MuserData.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/database/mongoDB/TempAuthData.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/database/mongoDB/TempUserAuthData.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/database/mongoDB/mongoRepo.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/htmlController/EntryController.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/htmlController/GlobalErrorHandler.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/htmlController/htmlDashboard.java
+/home/deepanshu/STS/SimpleServer/src/main/java/com/deepanshu/simpleserver/services/SecurityConfig.java

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+    <title>Server | Home</title>
+</head>
+<body>
+    <!-- Glassy Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">DeepServer</div>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/user/dashboard">Dashboard</a>
+            <!--<a href="/logout">Logout</a>-->
+			<!-- Show only if the user is authenticated -->
+	        <a href="/logout" sec:authorize="isAuthenticated()">Logout</a>
+	
+	        <!-- Show only if the user is not authenticated -->
+	        <a href="/login" sec:authorize="isAnonymous()">Login</a>
+        </nav>
+    </header>
+
+    <main id="main-contentt">
+        <h2 class="server-status">LOCAL SERVER SERVING AT PORT 8081</h2>
+
+        <section class="action-buttons">
+            <a class="btn" href="/user/get">Show Redis</a>
+            <a class="btn" href="/user/all">Show MongoDB</a>
+        </section>
+
+        <section sec:authorize="hasRole('ADMIN')" class="admin-section">
+            <h3>To Authorize a New Person</h3>
+            <a class="btn admin-btn" href="/authPerson">ADD</a>
+        </section>
+    </main>
+	<footer style="text-align: center;
+		    color: white;
+		    font-weight: 600;
+		    font-family: cursive;
+		    font-size: 18px;
+		    margin-top: auto;
+		    padding: 20px;
+		    opacity: 1;
+			margin-top: 4%;">
+	    <b>DeepServer by Deepanshu! 🇮🇳</b> <a href="github.com/ptdeepansh/"><i style="color: white; font-size: 20px;" class="fa fa-github"></i></a>
+	</footer>
+</body>
+</html>

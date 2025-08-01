@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Server | Home</title>
+</head>
+<body>
+    <!-- Glassy Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">DeepServer</div>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/user/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <h2 class="server-status">LOCAL SERVER SERVING AT PORT 8080</h2>
+
+        <section class="action-buttons">
+            <a class="btn" href="/user/get">Get</a>
+            <a class="btn" href="/user/all">Database</a>
+        </section>
+
+        <section sec:authorize="hasRole('ADMIN')" class="admin-section">
+            <h3>To Authorize a New Person:</h3>
+            <a class="btn admin-btn" href="/authPerson">ADD</a>
+        </section>
+    </main>
+</body>
+</html>
