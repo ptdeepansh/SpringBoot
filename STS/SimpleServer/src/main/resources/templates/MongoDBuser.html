@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>User Details | DeepServer</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">DeepServer</div>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/user/dashboard">Dashboard</a>
+            <!--<a href="/logout">Logout</a>-->
+			<!-- Show only if the user is authenticated -->
+	        <a href="/logout" sec:authorize="isAuthenticated()">Logout</a>
+	
+	        <!-- Show only if the user is not authenticated -->
+	        <a href="/login" sec:authorize="isAnonymous()">Login</a>			
+        </nav>
+    </header>
+
+    <main style="max-width: 100%; margin-top: 0.5%;" id="main-contentt">
+        <h2 class="glow-header" style="text-align: center;">User Details</h2>
+
+		<table>
+		    <thead>
+		        <tr>
+		            <th>ID</th>
+		            <th>Name</th>
+		            <th>Email</th>
+		            <th>State</th>
+		            <th>Age</th>
+		            <th>Phone</th>
+		            <th>Joined Date</th>
+		            <th>Total Matches</th>
+		            <th>Total Kills</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr th:each="user : ${users}">
+		            <td th:text="${user.id}">id</td>
+		            <td th:text="${user.name}">name</td>
+		            <td th:text="${user.email_id}">email</td>
+		            <td th:text="${user.state}">state</td>
+		            <td th:text="${user.age}">age</td>
+		            <td th:text="${user.phone_no}">phone</td>
+		            <td th:text="${#dates.format(user.joined_date, 'yyyy-MM-dd HH:mm')}">joined</td>
+		            <td th:text="${user.totalmatches}">matches</td>
+		            <td th:text="${user.totalkills}">kills</td>
+		        </tr>
+		    </tbody>
+		</table>
+
+        <section class="action-buttons">
+            <a class="btn" href="/">Back</a>
+            <!--<a class="btn" href="/user/all">All Users</a>-->
+        </section>
+    </main>
+</body>
+</html>

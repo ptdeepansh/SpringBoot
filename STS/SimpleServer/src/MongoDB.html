@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>User Details | DeepServer</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">DeepServer</div>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/user/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <h2 class="glow-header">User Details</h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <td th:text="${user.id}">ID</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td th:text="${user.name}">Name</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td th:text="${user.state}">State</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td th:text="${user.email_id}">Email</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td th:text="${user.age}">Age</td>
+            </tr>
+            <tr>
+                <th>Phone No</th>
+                <td th:text="${user.phone_no}">Phone No</td>
+            </tr>
+            <tr>
+                <th>Joined Date</th>
+                <td th:text="${user.joined_date}">Joined Date</td>
+            </tr>
+            <tr>
+                <th>Total Matches</th>
+                <td th:text="${user.totalmatches}">Total Matches</td>
+            </tr>
+            <tr>
+                <th>Total Kills</th>
+                <td th:text="${user.totalkills}">Total Kills</td>
+            </tr>
+        </table>
+
+        <section class="action-buttons">
+            <a class="btn" href="/user/get">Back</a>
+            <a class="btn" href="/user/all">All Users</a>
+        </section>
+    </main>
+</body>
+</html>

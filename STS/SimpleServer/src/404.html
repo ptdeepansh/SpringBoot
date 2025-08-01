@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title th:text="${errorTitle} ?: 'Error'">Page Not Found</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">DeepServer</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/user/dashboard">Dashboard</a>
+            <a href="/logout" sec:authorize="isAuthenticated()">Logout</a>
+            <a href="/login" sec:authorize="isAnonymous()">Login</a>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <h1 th:text="${errorTitle} ?: 'Error Occurred'">404 - Page Not Found</h1>
+        <p class="server-status" th:text="${errorMessage} ?: 'Something went wrong.'">
+            Oops! The page you are looking for doesn't exist.
+        </p>
+
+        <!-- Optional: Show exception details in development -->
+        <pre th:if="${exception != null}" th:text="${exception}"></pre>
+
+        <div class="action-buttons">
+            <a href="/" class="btn">Go to Home</a>
+        </div>
+    </div>
+</body>
+</html>

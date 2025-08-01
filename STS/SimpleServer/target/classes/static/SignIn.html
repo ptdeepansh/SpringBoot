@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Server | User Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Add box-sizing globally for consistent sizing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-size: 300% 300%;
+        background-repeat: repeat;
+        animation: gradientMove 2s linear infinite;
+        color: #eaeaea;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(-45deg, #000000, #080808, #181818, #000000, #6affe4);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        height: 100vh;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+
+        h1.page-heading {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 32px;
+            color: #eaeaea;
+        }
+
+        .signin-wrapper {
+            width: 30vw;
+            margin: 60px auto;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,255,231,0.3);
+        }
+
+        .signin-wrapper h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #1b1515;
+            font-size: 20px;
+            background-color: #00ffe7;
+            padding: 12px 20px;
+            border-radius: 10px 10px 0 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .signin-wrapper input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            background: #1c1c1c;
+            color: #f0f0f0;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .signin-wrapper input:focus {
+            outline: none;
+            border-color: #00ffe7;
+            box-shadow: 0 0 5px #00ffe7;
+        }
+
+        .signin-wrapper button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00ffe7;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        .signin-wrapper button:hover {
+            background-color: #00bfa6;
+            transform: scale(1.03);
+        }
+
+        .signin-wrapper #error {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body id="userform">
+    <h1 class="page-heading">Welcome back, please sign in</h1>
+    <div class="signin-wrapper">
+        <h2>User Login Form</h2>
+
+        <form name="myForm" id="myForm" method="post">
+            <input type="text" name="username" id="username" placeholder="Enter your username..." required />
+            <input type="password" name="password" id="password" placeholder="Enter your password..." required />
+            <p id="error"></p>
+            <button type="submit" id="formBtn">Login</button>
+        </form>
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.get("success") === "true") {
+                alert("✅ Login successful!");
+                window.location.href = "/";
+            }
+
+            if (params.get("error") === "true") {
+                alert("❌ Invalid username or password!");
+                const errorElement = document.getElementById("error");
+                if (errorElement) {
+                    errorElement.textContent = "❌ Invalid username or password!";
+                }
+            }
+
+            if (params.get("logout") === "true") {
+                alert("✅ Logout successful!");
+                window.location.href = "/";
+            }
+
+            history.replaceState(null, "", window.location.pathname);
+        });
+    </script>
+	<footer style="text-align: center;
+			    color: white;
+			    font-weight: 600;
+			    font-family: cursive;
+			    font-size: 18px;
+			    margin-top: auto;
+			    padding: 20px;
+			    opacity: 1;
+				margin-top: 4%;">
+		    <b>DeepServer by Deepanshu! 🇮🇳</b> <a href="github.com/ptdeepansh/"><i style="color: white; font-size: 20px;" class="fa fa-github"></i></a>
+		</footer>
+</body>
+</html>

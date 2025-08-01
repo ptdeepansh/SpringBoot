@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <title>Server | Store Data</title>
+</head>
+<body>
+
+    <!-- Glassy Navbar -->
+    <div class="navbar">
+        <div class="logo">DeepServer</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/user/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div id="main-contentt">
+        <h1 class="glow-header">Store Data</h1>
+
+        <div class="form-glass">
+            <h2>Submit user credentials securely to the server</h2>
+
+            <form id="myFormm">
+                <input type="text" name="name" id="name" placeholder="Enter your name..." required />
+                <input type="password" name="password" id="password" placeholder="Enter password..." required />
+
+                <div class="role-selection">
+                    <label>
+                        <input type="radio" name="role" value="USER" required />
+                        User
+                    </label>
+                    <label>
+                        <input type="radio" name="role" value="ADMIN" required />
+                        Admin
+                    </label>
+                </div>
+
+                <p id="error" class="error-message"></p>
+
+                <button type="submit" id="formBtn" class="btn">Store Data</button><br><br>
+                <a href="/" class="btn admin-btn">Home 🕹</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('myFormm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const data = {
+                username: form.name.value,
+                password: form.password.value,
+                role: form.role.value,
+            };
+
+            fetch("/user/post", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(message => {
+                console.log('✅ Success:', message);
+                document.getElementById('error').textContent = 'User submitted successfully!';
+                form.reset();
+                window.location.href = "/user/get";
+            })
+            .catch(error => {
+                console.error('❌ Error:', error);
+                document.getElementById('error').textContent = 'Submission failed: ' + error.message;
+            });
+        });
+    </script>
+
+</body>
+</html>
